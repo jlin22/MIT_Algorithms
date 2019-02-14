@@ -55,8 +55,24 @@ def greedy_ascent(a):
     return -1
 
 def fast_2dpeak_finder(a):
-    pass
+    n, m = len(a), len(a[0])
+    low, high = 0, n-1
+    while low <= high:
+        mid = (low + high) // 2
+        peak1d = fast_1dpeak_finder(a[mid])
+        if a[mid][peak1d] < a[mid-1][peak1d]:
+            high = mid-1
+        elif a[mid][peak1d] < a[mid+1][peak1d]:
+            low = mid+1
+        else:
+            return [mid, peak1d]
+    return -1
+
+
+    
         
-a = [[1, 2, 3, 4], [2, 3, 4, 5]]
+a = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]]
 print(greedy_ascent(a))
+
+print(fast_2dpeak_finder(a))
 
