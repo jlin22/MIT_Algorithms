@@ -1,3 +1,15 @@
+import time
+
+def time_func(func):
+    def modified_func(inputs):
+        start = time.time()
+        output = func(inputs)
+        end = time.time()
+        print(end - start)
+        return output
+    return modified_func
+
+@time_func
 def insertion_sort(a):
     for i in range(1, len(a)):
         key = a[i]
