@@ -3,10 +3,10 @@ def swap(a, i, j):
     return a
 
 def bubble_sort(a):
-    for i in range(0, len(a)):
+    for i in range(1, len(a)):
         for j in reversed(range(i, len(a))):
-            if a[i] > a[j]:
-                swap(a, i, j)
+            if a[j-1] > a[j]:
+                swap(a, j-1, j)
     return a
 
 if __name__ == "__main__":
@@ -14,4 +14,6 @@ if __name__ == "__main__":
     a = swap(a, 1, 2)
     print(a)
     print(bubble_sort(a))
+    b = [100, 65, 45, 33, 22, 11, 9, 8, 7]
+    print(bubble_sort(b))
     
