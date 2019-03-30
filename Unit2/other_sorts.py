@@ -4,9 +4,13 @@ def swap(a, i, j):
 
 def bubble_sort(a):
     for i in range(1, len(a)):
+        inversions = 0
         for j in reversed(range(i, len(a))):
             if a[j-1] > a[j]:
                 swap(a, j-1, j)
+                inversions += 1
+        if not inversions:
+            break
     return a
 
 if __name__ == "__main__":
