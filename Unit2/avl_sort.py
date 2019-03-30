@@ -50,4 +50,10 @@ def left_rotate_better(node):
     node.right.left = node
     node.right = prev_right_left
 
+def right_rotate(node):
+    prev_left_right = node.left.right
+    node.left.parent = node.parent
+    node.parent = node.left
+    node.left.right = node
+    node.left = prev_left_right
 
