@@ -5,7 +5,9 @@ class Node:
     parent = None
 
 def insert(root, key):
-    if root.key < key:
+    if root.key is None: #empty bst
+        root.key = key        
+    elif root.key < key:
         if root.right is None:
             root.right = Node()
             root.right.key = key
@@ -24,6 +26,14 @@ def insert(root, key):
     else:
         return None
 
+def find(root, key):
+    if root is None or root.key == key:
+        return root
+    elif root.key < key:
+        return find(root.right, key)
+    elif root.key > key:
+        return find(root.left, key)
+    
 def inorder(root):
     if root is None:
         return
@@ -37,3 +47,4 @@ if __name__ == "__main__":
     for key in a:
         insert(bst, key)
     inorder(bst)
+    print(find(bst, 4).key)

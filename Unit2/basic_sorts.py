@@ -87,4 +87,5 @@ def merge(a, p, r, q):
     return a
 
 a = [31, 64, 45, 28, 12, 50]
-print(merge_sort(a))
+#print(merge_sort(a))
+print(binary_insertion_sort(a))
