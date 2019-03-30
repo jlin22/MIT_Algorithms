@@ -24,4 +24,13 @@ def rebalance(node):
                 left_rotate(node)
         node = node.parent
 
+def left_heavy(node):
+    return height(node.left) > height(node.right) + 1
+
+def right_heavy(node):
+    return height(node.right) > height(node.left) + 1
+
+def balanced(node):
+    return height(node.right) == height(node.left)
+
 
