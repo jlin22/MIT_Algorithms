@@ -33,4 +33,21 @@ def right_heavy(node):
 def balanced(node):
     return height(node.right) == height(node.left)
 
+def left_rotate(node):
+    prev_key = node.key
+    node.key = node.right.key
+    prev_right_left = node.right.left
+    node.right = node.right.right
+    node.left.parent = Node()
+    node.left = node.left.parent
+    node.left.key = prev_key
+    node.left.right = prev_right_left
+
+def left_rotate_better(node):
+    prev_right_left = node.right.left
+    node.right.parent = node.parent
+    node.parent = node.right
+    node.right.left = node
+    node.right = prev_right_left
+
 
