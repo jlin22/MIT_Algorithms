@@ -9,14 +9,16 @@ def counting_sort(a, b, k, key=(lambda x: x)):
     for element in reversed(a):
         b[c[key(element)]-1] = element
         c[key(element)] -= 1
+    return b
 
 def dth_digit_function(d):
     return lambda x: (x // (10 ** d)) % 10
 
 def radix_sort(a, d):
-    b = [0 for i in range(len(a))]
     for i in range(d):
-        counting_sort(a, b, 10, dth_digit_function(i))
+        b = [0 for i in range(len(a))]
+        counting_sort(a, b, 9, dth_digit_function(i))
+        a = b
     return b
 
 def sorted(a):
@@ -45,9 +47,9 @@ def is_permutation(a, b):
     return True
         
 if __name__ == "__main__":
-    a = [random.randint(0, 10) for i in range(100000)]
-    b = [0 for i in range(100000)]
-    counting_sort(a, b, 1000)
+    a = [random.randint(0, 9999) for i in range(10000)]
+    print(a)
+    b = radix_sort(a, 4)
     print(b)
     print("sorted", sorted(b))
     print("is_permutation(a, b)", is_permutation(a, b))
