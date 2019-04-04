@@ -19,9 +19,35 @@ def radix_sort(a, d):
         counting_sort(a, b, 10, dth_digit_function(i))
     return b
 
+def sorted(a):
+    for i in range(1, len(a)):
+        if a[i-1] > a[i]:
+            return False
+    return True
 
+def is_permutation(a, b):
+    count = {}
+    for item in a:
+        if item not in count:
+            count[item] = 1
+        else:
+            count[item] += 1
+    for item in b:
+        if item not in count:
+            return False
+        else:
+            count[item] -= 1
+            if count[item] < 0:
+                return False
+    for value in count.values():
+        if value != 0:
+            return False
+    return True
+        
 if __name__ == "__main__":
     a = [random.randint(0, 10) for i in range(100000)]
     b = [0 for i in range(100000)]
     counting_sort(a, b, 1000)
     print(b)
+    print("sorted", sorted(b))
+    print("is_permutation(a, b)", is_permutation(a, b))
